@@ -1,0 +1,35 @@
+package com.ti.selenium;
+
+import com.ti.base.BrowserType;
+import com.ti.base.DriverFactory;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+
+public class BaseTestClass {
+    protected WebDriver driver;
+    protected String demoSiteUrl = "https://demosite.titaniuminstitute.com.mx/wp-admin/admin.php?page=sch-dashboard";
+     String username = "admin";
+     String password = "G3-ySzY%";
+
+    @BeforeTest
+    @Parameters("browser")
+    public void setup(String browser) {
+        DriverFactory.getInstance().setDriver(BrowserType.valueOf(browser));
+        driver = DriverFactory.getInstance().getDriver();
+    }
+
+    @AfterTest
+    public void turnDown() {
+        DriverFactory.getInstance().removeDriver();
+    }
+
+     void wait(int seg) {
+        try {
+            Thread.sleep(seg * 1000);
+        } catch (InterruptedException ie) {
+            System.err.println(ie.getMessage());
+        }
+    }
+}
