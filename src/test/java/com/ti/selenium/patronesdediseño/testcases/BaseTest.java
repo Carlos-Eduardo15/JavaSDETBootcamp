@@ -24,7 +24,7 @@ public class BaseTest {
         userCredentials.put("username", "admin");
         userCredentials.put("password", "G3-ySzY%");
 
-        loginPage = new LoginPage();
+        loginPage = new LoginPage(DriverFactory.getInstance().getDriver());
 
     }
 

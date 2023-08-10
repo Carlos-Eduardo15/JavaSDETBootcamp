@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test name="Chrome Test">
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="CHROME"/>
         <classes>
             <!--comentario-->
-            <class name="com.ti.selenium.patronesdediseño.testcases.TestClass"></class>
+            <class name="com.ti.selenium.patronesdediseño.DriverFactoryTest"></class>
         </classes>
     </test>
 </suite>

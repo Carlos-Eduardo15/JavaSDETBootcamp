@@ -16,6 +16,7 @@ public class AtomicTestExample extends BaseTestClass {
     @BeforeClass
     void login() {
         driver.navigate().to("https://www.saucedemo.com/");
+        wait(4);
         driver.manage().deleteAllCookies();
         ((JavascriptExecutor) driver).executeScript("localStorage.clear();");
         wait(4);
@@ -27,16 +28,18 @@ public class AtomicTestExample extends BaseTestClass {
         driver.navigate().refresh();
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     void validateShippingCartItems() {
         driver.navigate().to("https://www.saucedemo.com/cart.html");
+        wait(4);
         WebElement spnShoppingCart = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(driver -> driver.findElement(By.className("shopping_cart_badge")));
+        wait(4);
         Assert.assertEquals(Integer.valueOf(spnShoppingCart.getText()), 3);
         wait(4);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     void validateUserCanCheckOut() {
         driver.navigate().to("https://www.saucedemo.com/checkout-step-one.html");
         new WebDriverWait(driver, Duration.ofSeconds(8))
@@ -55,17 +58,23 @@ public class AtomicTestExample extends BaseTestClass {
         wait(2);
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     void AddCartsQuantityFromSameItem() {
         driver.manage().deleteAllCookies();
         ((JavascriptExecutor) driver).executeScript("localStorage.clear();");
+        wait(4);
         driver.navigate().to("https://shop.demoqa.com/cart/");
+        wait(4);
         String hash = (String) ((JavascriptExecutor) driver).executeScript("localStorage.getItem(\"wc_cart_hash_2265a9f6fbc383987ee8d0afbe044d95\");");
         System.out.println(hash);
+        wait(4);
         Cookie itemCookie = new Cookie("woocommerce_items_in_cart", "3");
+        wait(4);
         Cookie hashCookie = new Cookie("woocommerce_cart_hash", hash);
+        wait(4);
         driver.manage().addCookie(itemCookie);
         driver.manage().addCookie(hashCookie);
+        wait(4);
         driver.navigate().refresh();
         wait(2);
     }

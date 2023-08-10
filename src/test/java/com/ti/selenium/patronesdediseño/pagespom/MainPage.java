@@ -1,16 +1,19 @@
 package com.ti.selenium.patronesdediseño.pagespom;
 
-import com.ti.base.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class MainPage {
-    WebDriver driver = DriverFactory.getInstance().getDriver();
+    protected WebDriver driver;
+
+    public MainPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     private By spnSchoolTitle = By.className("wpsp-schoolname");
 
-    private String getSchoolName() {
+    public String getSchoolName() {
         return driver.findElement(spnSchoolTitle).getText();
     }
 

@@ -1,31 +1,34 @@
 package com.ti.selenium.patronesdediseño.pagespom;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends MainPage {
 
     private By txtUsername = By.id("user_login");
-
     private By txtPassword = By.name("pwd");
-
     private By chkRememberMe = By.cssSelector("#rememberme");
-
     private By btnLogin = By.xpath("//input[contains(@value,'Log')]");
 
-    private void typeUsername(String username) {
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public void typeUsername(String username) {
         driver.findElement(txtUsername).clear();
         driver.findElement(txtUsername).sendKeys(username);
     }
 
-    private void typePassword(String password) {
+    public void typePassword(String password) {
         driver.findElement(txtPassword).clear();
         driver.findElement(txtPassword).sendKeys(password);
     }
 
-    private void checkRememberMe() {
+    public void checkRememberMe() {
         driver.findElement(chkRememberMe).click();
     }
 
-    private void clickLogin() {
+    public void clickLogin() {
         driver.findElement(btnLogin).click();
     }
 
@@ -35,6 +38,4 @@ public class LoginPage extends MainPage {
         checkRememberMe();
         clickLogin();
     }
-
-
 }
